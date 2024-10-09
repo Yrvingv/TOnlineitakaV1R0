@@ -1,0 +1,58 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <img src="{{ url_for('static', filename='images/principalIMG.png') }}" alt="Principal Image" class="principal-img">
+
+    <!-- Menú de Categorías (solo si no se está buscando) -->
+    {% if not search_query %}
+    <div class="categories">
+        <ul>
+            <li><a href="{{ url_for('index') }}" class="{% if not category_name %}active{% endif %}">Todos los Productos</a></li>
+            <li><a href="{{ url_for('index', category_name='Sets Leggins y Faldas') }}" class="{% if category_name == 'Sets Leggins y Faldas' %}active{% endif %}">Sets Leggins y Faldas</a></li>
+            <li><a href="{{ url_for('index', category_name='Sets Shorts') }}" class="{% if category_name == 'Sets Shorts' %}active{% endif %}">Sets Shorts</a></li>
+            <li><a href="{{ url_for('index', category_name='Enterizos') }}" class="{% if category_name == 'Enterizos' %}active{% endif %}">Enterizos</a></li>
+            <li><a href="{{ url_for('index', category_name='Leggins y Shorts') }}" class="{% if category_name == 'Leggins y Shorts' %}active{% endif %}">Leggins y Shorts</a></li>
+            
+        </ul>
+    </div>
+    {% endif %}
+    <h2 class="category-message"> 
+        {% if category_name %}
+         <!--{{ category_name.capitalize() }} -->
+        {% elif search_query %}
+            Resultados de búsqueda para: "{{ search_query }}"
+        {% else %}
+         <!-- Sin mensaje -->
+        {% endif %}
+    </h2>
+    <!-- Grid de productos -->
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/' + product['category'] + '/' + product['image_url'].split('/')[-1]) }}" alt="{{ product['name'] }}">
+            <h3>{{ product['name'] }}</h3>
+            <p class="description">{{ product['description'] }}</p>
+            <p><strong>Precio:</strong> ${{ "{:.2f}".format(product['price']) }}</p>
+            <p><strong>Stock:</strong> {{ product['stock'] }} unidades</p>
+            <p><strong>Condición:</strong> {{ product['condition'] }}</p>
+            <a href="{{ url_for('add_to_cart', product_id=product['id']) }}" class="add-to-cart-button">Agregar al Carrito</a>
+        </div>
+        {% else %}
+        <p>No se encontraron productos.</p>
+        {% endfor %}
+    </div>
+    
+<!--{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+{% endwith %}-->
+  
+{% endblock %}
