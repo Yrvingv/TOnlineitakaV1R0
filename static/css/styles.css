@@ -186,17 +186,25 @@ main {
     margin-bottom: 60px;
     margin-top: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center;     /* Centrar verticalmente (si es necesario) */
+    flex-direction: row;     /* Mantén los elementos en fila en pantallas grandes */
 }
 
 .categories ul {
     list-style: none;
-    display: flex;
     flex-wrap: wrap;
+    list-style-type: none;  /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;  /* Espacio entre los enlaces */
+
 }
 
 .categories ul li {
     margin-right: 15px;
+    display: inline-block;
 }
 
 /* Estilo por defecto para los enlaces de las categorías */
@@ -207,6 +215,9 @@ main {
     border: 1px solid #565254;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
+    padding: 10px 20px;  /* Espaciado interno para los botones */
+    background-color: #f5f5f5; /* Fondo del botón */
+    border-radius: 5px;  /* Bordes redondeados */
 }
 
 /* Hover: al pasar el ratón por encima */
@@ -719,5 +730,17 @@ main {
 
     header h1 a {
         font-size: 2em; /* Disminuir el tamaño del texto */
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .categories {
+        flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
+    }
+    
+    .categories ul {
+        flex-direction: column; /* Alinea los elementos en una sola columna */
+        gap: 10px;  /* Ajusta el espacio entre enlaces */
     }
 }
