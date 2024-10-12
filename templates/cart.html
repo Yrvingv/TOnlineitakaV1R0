@@ -7,42 +7,44 @@
     <h2>Tu Carrito de Compras</h2>
     {% if cart %}
     <form method="post" action="{{ url_for('update_cart') }}">
-        <table>
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio Unitario</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart %}
-                {% set subtotal = item.price * item.quantity %}
-                <tr>
-                    <td class="text-left">{{ item.name }}</td>
-                    <td class="text-right">${{ "{:.2f}".format(item.price) }}</td>
-                    <td>
-                        <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1" max="{{ item.stock }}">
-                    </td>
-                    <td class="text-right" id="subtotal_{{ item.id }}">${{ "{:.2f}".format(subtotal) }}</td>
-                    <td class="text-right"><a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="remove-button">Eliminar</a></td>
-                </tr>
-                {% endfor %}
-                {% if total is not none %}
-                <tr>
-                    <td colspan="3" class="total-label"><strong>Total:</strong></td>
-                    <td colspan="2" class="total-amount" id="totalAmount"><strong>${{ "{:.2f}".format(total) }}</strong></td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td colspan="3" class="total-label"><strong>Total:</strong></td>
-                    <td colspan="2" class="total-amount" id="totalAmount"><strong>$0.00</strong></td>
-                </tr>
-                {% endif %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th> <!-- Esta columna se puede ocultar en pantallas pequeñas si no es necesaria -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                    {% set subtotal = item.price * item.quantity %}
+                    <tr>
+                        <td class="text-left">{{ item.name }}</td>
+                        <td class="text-right">${{ "{:.2f}".format(item.price) }}</td>
+                        <td>
+                            <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1" max="{{ item.stock }}">
+                        </td>
+                        <td class="text-right" id="subtotal_{{ item.id }}">${{ "{:.2f}".format(subtotal) }}</td>
+                        <td class="text-right"><a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="remove-button">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% if total is not none %}
+                    <tr>
+                        <td colspan="3" class="total-label"><strong>Total:</strong></td>
+                        <td colspan="2" class="total-amount" id="totalAmount"><strong>${{ "{:.2f}".format(total) }}</strong></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="total-label"><strong>Total:</strong></td>
+                        <td colspan="2" class="total-amount" id="totalAmount"><strong>$0.00</strong></td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>        
         <div class="cart-actions">
             <button type="submit" class="boton-estilo">Actualizar Carrito</button>
             <!--<a href="{{ url_for('checkout') }}" class="checkout-button">Finalizar la Compra</a>-->

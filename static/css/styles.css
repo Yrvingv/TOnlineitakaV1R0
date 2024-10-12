@@ -1,11 +1,6 @@
 /* static/css/styles.css PARA LA CARPETA 0 PM8 TIENDA ONLINE*/
 
 /* Reset de márgenes y paddings */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body, html {
     margin: 0;
@@ -29,7 +24,7 @@ header {
     background-color: #000000; /* NEGRO */
     padding: 0px;
 }
-
+/*
 .banner {
     background-color: #0b0b0b;
     color: #fff;
@@ -37,7 +32,7 @@ header {
     font-family: verdana;
     padding: 10px 0;
     font-weight: 200;
-}
+}*/
 
 .logo {
     text-align: center;
@@ -293,87 +288,6 @@ main {
 }
 
 /* Carrito de Compras */
-.cart-container table {
-    width: 200%;
-    border-collapse: collapse;
-    margin-bottom: 50px;
-}
-
-.cart-container th, .cart-container td {
-    border: 1px solid #ddd;
-    padding: 20px;
-    text-align: center;
-}
-
-.cart-container th {
-    background-color: #FFD700; /* Amarillo dorado */
-    color: #333333;
-}
-
-.cart-container .total-label {
-    text-align: right;
-    padding-right: 20px;
-}
-
-.cart-container .total-amount {
-    text-align: left;
-    padding-left: 20px;
-}
-
-
-table {
-    width: 100%; /* Hace que la tabla ocupe todo el ancho disponible */
-    border-collapse: collapse; /* Elimina el espacio entre las celdas */
-}
-
-th, td {
-    border: 1px solid #d3d3d3; /* Borde gris claro para las celdas */
-    padding: 10px; /* Espaciado interno para las celdas */
-    text-align: center; /* Alineación del texto a la izquierda */
-}
-
-th {
-    background-color: #f2f2f2; /* Color de fondo para las cabeceras */
-    font-weight: bold; /* Negrita para las cabeceras */
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9; /* Color de fondo alterno para las filas pares */
-}
-
-tr:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar el mouse sobre una fila */
-}
-
-.remove-button {
-    color: #d16666; /* Color del enlace para eliminar */
-    text-decoration: none; /* Sin subrayado */
-}
-
-.remove-button:hover {
-    text-decoration: underline; /* Subrayar al pasar el mouse */
-}
-
-.text-right {
-    text-align: right; /* Alinear texto a la derecha */
-    padding-right: 10px; /* Espacio hasta el límite derecho de la celda */
-}
-
-.text-left {
-    text-align: left; /* Alinear texto a la derecha */
-    padding-left: 10px; /* Espacio hasta el límite derecho de la celda */
-}
-
-.laq {
-    width: 70px; /* Cambia el tamaño del campo según tu preferencia */
-    padding: 5px; /* Espacio interno */
-    text-align: right; /* Alinear el texto a la derecha */
-    border: 2px solid #d3d3d3; /* Bordes como el resto de los botones */
-    border-radius: 4px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño del texto */
-    margin-right: 0px; /* Espacio a la derecha, si es necesario */
-}
-
 
 /* Formularios de Contacto */
 form label {
@@ -406,9 +320,9 @@ form textarea {
     transition: background-color 0.3s;
     display: block; /* Asegura que el botón ocupe un bloque completo */
     margin: 0 auto; /* Esto centrará el botón horizontalmente */
-    margin-bottom: 20px; /* Esto añade 20px de margen debajo del botón */
+    margin-bottom: 10px; /* Esto añade 20px de margen debajo del botón */
     margin-top: 10px; /* Esto añade 20px de margen superior */
-    font-size: 28px; /* Tamaño del texto */
+    font-size: 24px; /* Tamaño del texto */
 }
 
 .checkout-button:hover {
@@ -422,7 +336,7 @@ form textarea {
     display: flex;          /* Flexbox para alinear en una fila */
     justify-content: space-between; /* Distribuye los botones equitativamente */
     gap: 100px;              /* Espacio entre botones */
-    margin-top: 20px;       /* Espaciado superior */
+    margin-top: 35px;       /* Espaciado superior */
 }
 
 /* Estilos comunes para los botones */
@@ -437,8 +351,8 @@ form textarea {
     transition: background-color 0.3s;
     margin: 0 auto; /* Esto centrará el botón horizontalmente */
     margin-bottom: 20px; /* Esto añade 20px de margen debajo del botón */
-    margin-top: 10px; /* Esto añade 20px de margen superior */
-    width: 200px; /* Ancho fijo */
+    margin-top: 15px; /* Esto añade 20px de margen superior */
+    width: 250px; /* Ancho fijo */
     text-align: center; /* Centra el texto dentro del botón */
     font-size: 13px; /* Tamaño del texto */
     text-decoration: none; /* Remover subrayado en enlaces */
@@ -566,8 +480,6 @@ footer {
 
 /* Reset de márgenes y paddings */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -604,10 +516,11 @@ header {
 }
 
 .logo img {
-    width: 100%; /* Hacer el logo responsivo */
+    width: 50%; /* Hacer el logo responsivo */
     max-width: 240px; /* Ancho máximo */
     margin: 20px auto;
     display: block;
+    
 }
 
 .header-container {
@@ -716,6 +629,7 @@ main {
 
 /* Media Queries */
 @media (max-width: 768px) {
+
     nav ul {
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
     }
@@ -735,6 +649,9 @@ main {
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+    
+
+
     .categories {
         flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
     }
@@ -742,5 +659,44 @@ main {
     .categories ul {
         flex-direction: column; /* Alinea los elementos en una sola columna */
         gap: 10px;  /* Ajusta el espacio entre enlaces */
+    }
+}
+
+
+/* Contenedor que permite el desplazamiento horizontal */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    padding-left: 0em;  /* Añade 5em de espacio en el lado izquierdo */
+}
+
+/* Asegura que la tabla ocupe el 100% del ancho del contenedor */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Ajusta los anchos de las celdas para que se adapten mejor */
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Estilo general para móviles */
+@media (max-width: 768px) {
+
+    th, td {
+        font-size: 14px; /* Reduce el tamaño de fuente para móviles */
+    }
+    
+    /* Ocultar algunas columnas en móviles si es necesario */
+    td:nth-child(5), th:nth-child(5) {
+        display: none; /* Esto ocultaría la columna de "Acciones" en pantallas pequeñas */
     }
 }
