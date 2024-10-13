@@ -35,18 +35,7 @@
                 <img src="{{ url_for('static', filename='images/busqueda.png') }}" alt="Buscar" class="search-icon">
             </button>
         </form>
-
-        <!-- Mensajes Flash 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for category, message in messages %}
-                        <div class="alert {{ category }}">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}-->
-    </header>
+</header>
     
     <main>
         {% block content %}{% endblock %}
