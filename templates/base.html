@@ -11,7 +11,7 @@
     <body>
         <div class="banner">DELIVERY GRATIS EN BARQUISIMETO | CIERTAS CONDICIONES APLICAN</div>
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo">
+            <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Logo">
         </div>
         <header>
         <div class="header-container">
@@ -22,7 +22,7 @@
                     <li><a href="{{ url_for('contact') }}">Contactos</a></li>
                     <li>
                         <a href="{{ url_for('cart') }}">
-                            <img src="{{ url_for('static', filename='images/car.png') }}" alt="Carrito" class="cart-icon">
+                            <img src="{{ url_for('static', filename='images/car.webp') }}" alt="Carrito" class="cart-icon">
                             ({{ session.get('cart')|length if session.get('cart') else 0 }})
                         </a>
                     </li>
@@ -32,7 +32,7 @@
         <form method="get" action="{{ url_for('search') }}" class="search-form">
             <input type="text" name="search" placeholder="Buscar productos..." value="{{ search_query if search_query else '' }}">
             <button type="submit">
-                <img src="{{ url_for('static', filename='images/busqueda.png') }}" alt="Buscar" class="search-icon">
+                <img src="{{ url_for('static', filename='images/busqueda.webp') }}" alt="Buscar" class="search-icon">
             </button>
         </form>
 </header>
@@ -48,20 +48,20 @@
                 <a href="{{ url_for('my_orders') }}">Mis Clientes</a>
                 <a href="{{ url_for('contact') }}">Contactos</a>
                 <a href="{{ url_for('cart') }}">
-                        <img src="{{ url_for('static', filename='images/car.png') }}" alt="Carrito" class="cart-icon">
+                        <img src="{{ url_for('static', filename='images/car.webp') }}" alt="Carrito" class="cart-icon">
                         ({{ session.get('cart')|length if session.get('cart') else 0 }})
                 </a>
                 </li>
             </div>
             <div class="social-links">
-                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoX.png') }}" alt="Twitter"></a>
-                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoINSTA.png') }}" alt="Instagram"></a>
-                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoFACE.png') }}" alt="Facebook"></a>
+                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoX.webp') }}" alt="Twitter"></a>
+                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoINSTA.webp') }}" alt="Instagram"></a>
+                <a href="https://www.instagram.com/itakasfitnesswear" target="_blank"><img src="{{ url_for('static', filename='images/logoFACE.webp') }}" alt="Facebook"></a>
             </div>
         </footer>
         <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
         <a href="https://wa.me/584245858011" class="whatsapp-float" target="_blank">
-            <img src="{{ url_for('static', filename='images/logoWSP2.png') }}" alt="WhatsApp" />
+            <img src="{{ url_for('static', filename='images/logoWSP2.webp') }}" alt="WhatsApp" />
         </a>
         <p>&copy; 2024 itaka - fitnesswear . Todos los derechos reservados.</p>
     </footer>

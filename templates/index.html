@@ -4,7 +4,7 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <img src="{{ url_for('static', filename='images/principalIMG.png') }}" alt="Principal Image" class="principal-img">
+    <img src="{{ url_for('static', filename='images/principalIMG.webp') }}" alt="Principal Image" class="principal-img">
 
     <!-- Menú de Categorías (solo si no se está buscando) -->
     {% if not search_query %}
@@ -45,14 +45,5 @@
         {% endfor %}
     </div>
     
-<!--{% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class="flashes">
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-{% endwith %}-->
   
 {% endblock %}
