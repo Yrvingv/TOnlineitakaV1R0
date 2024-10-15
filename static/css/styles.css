@@ -3,6 +3,12 @@
 /* PARTE 1------: Reset de márgenes y paddings / Temas Generales que aplican a todas las paginas/*/
 
 body, html {
+    font-family: 'Roboto', sans-serif; 
+    /* Cambia 'Roboto' por la fuente que prefieras */
+    /* font-size: 16px; 
+    Tamaño de fuente por defecto */
+    line-height: 1.5; 
+    /* Espaciado de línea para mejorar la legibilidad */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -11,20 +17,19 @@ body, html {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #ffffff;
-    color: #333333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Encabezado */
+/* Encabezado 
 header {
-    background-color: #000000; /* NEGRO */
+    background-color: #000000;/* NEGRO
     padding: 0px;
-}
-/*
+}*/
+
+/* banner */
 .banner {
     background-color: #0b0b0b;
     color: #fff;
@@ -32,138 +37,175 @@ header {
     font-family: verdana;
     padding: 10px 0;
     font-weight: 200;
-}*/
+}
 
+
+
+/* PARTE 2------: CSS PARA EL LOGO */
 .logo {
     text-align: center;
 }
+
 .logo img {
     width: 240px;
     margin: 20px auto;
     display: block;
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff; /* Asegurarse de que el fondo del header también sea blanco */
-}
+/* PARTE 3------: ENCABEZADO DE LA PAGINA WEB */
 
 /* Título del encabezado */
 header h1 a {
-    color: #333333; /* Letras gris oscuro */
+    color: #333333;    /* Letras gris oscuro */
     text-decoration: none;
-    font-size: 2.5em; /* Tamaño más grande para el título */
-    font-family: 'Century Gothic', sans-serif; /* Fuente Century Gothic */
+    font-size: 2.5em;    /* Tamaño más grande para el título */
+    font-family: 'Century Gothic', sans-serif;    /* Fuente Century Gothic */
 }
 
-/* Navegación */
-nav ul {
-    list-style: none;
+/* PARTE 4. BARRA DE NAVEGACION ---- aqui empieza la barra de navegacion*/
+
+/* Contenedor de la barra de navegación */
+.header-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5px;
-    border: none; /* Eliminar cualquier borde que esté afectando la lista */
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-bottom: 2px solid #eaeaea;
 }
 
-/* Espaciado entre los elementos del menú */
+/* Estilos para la lista de navegación */
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px; /* Espaciado entre los elementos del menú */
+}
+
+/* Estilos para los elementos del menú */
 nav ul li {
-    margin: 0 65px;
-    border: none; /* Eliminar cualquier borde en los elementos de la lista */
+    margin: 0;
 }
 
 /* Estilos para los enlaces del menú */
 nav ul li a {
     text-decoration: none;
-    color: #878484; /* Letras gris oscuro */
-    font-weight: normal;
-    font-size: 2.2em; /* Aumentar el tamaño del texto en el menú */
-    border: none; /* Eliminar cualquier borde de los enlaces */
-    transition: color 0.3s;
-    font-family: 'Century Gothic', sans-serif; /* Fuente Century Gothic */
+    color: #333333;
+    font-size: 1.2em;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Cambiar el color del enlace al pasar el mouse */
+/* Hover sobre enlaces del menú */
 nav ul li a:hover {
-    color: #000000; /* Un gris un poco más claro cuando se pasa el ratón por encima */
+    color: #ffffff;
+    background-color: #333333;
+    border-radius: 5px;
 }
+
 /* Estilo del ícono del carrito */
 .cart-icon {
-    width: 50px;  /* Ajusta el tamaño del icono */
-    height: 50px; /* Mismo que el ancho para mantener proporciones */
-    vertical-align: middle; /* Alinea verticalmente con el texto */
-    margin-right: 5px; /* Añade un espacio entre el icono y el número */
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-left: 15px;
 }
 
-li a {
-    display: flex;
-    align-items: center; /* Alinea el icono y el texto del número en el mismo nivel */
-}
 
+/* aqui termina la barra de navegacion */
+
+/* PARTE 5------: LA BARRA BUSCADOR */
 
 /* Formulario de búsqueda */
 .search-form {
     margin-top: 0px;
     display: flex;
-    justify-content: center; /* Centra el formulario */
+    justify-content: center;
+    /* Centra el formulario */
     align-items: center;
-    gap: 15px; /* Añade un pequeño espacio entre los elementos */
+    gap: 15px;
+    /* Añade un pequeño espacio entre los elementos */
 }
 
 /* Estilos del input de búsqueda */
 .search-form input[type="text"] {
-    padding: 10px 15px; /* Ajusta el relleno para un aspecto más amplio */
-    width: 300px; /* Aumenta el ancho del campo de búsqueda */
-    border: 2px solid #ccc; /* Bordes más visibles */
-    border-radius: 30px; /* Bordes redondeados */
+    padding: 10px 15px;
+    /* Ajusta el relleno para un aspecto más amplio */
+    width: 300px;
+    /* Aumenta el ancho del campo de búsqueda */
+    border: 2px solid #ccc;
+    /* Bordes más visibles */
+    border-radius: 30px;
+    /* Bordes redondeados */
     outline: none;
-    background-color: #ffffff; /* Fondo blanco */
-    transition: all 0.3s ease; /* Transición suave para los cambios */
+    background-color: #ffffff;
+    /* Fondo blanco */
+    transition: all 0.3s ease;
+    /* Transición suave para los cambios */
 }
 
 /* Añade un efecto suave cuando el input esté en focus */
 .search-form input[type="text"]:focus {
-    border-color: #FF007F; /* Cambia el color del borde al enfocarse */
-    box-shadow: 0 0 5px rgba(255, 0, 127, 0.5); /* Sombra rosa cuando se enfoca */
+    border-color: #FF007F;
+    /* Cambia el color del borde al enfocarse */
+    box-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+    /* Sombra rosa cuando se enfoca */
 }
 
 /* Estilos del botón de búsqueda (ahora una imagen) */
 .search-form button {
     border: none;
-    background: none; /* Elimina cualquier fondo */
+    background: none;
+    /* Elimina cualquier fondo */
     cursor: pointer;
-    padding: 0; /* Elimina el relleno del botón */
+    padding: 0;
+    /* Elimina el relleno del botón */
     display: flex;
     align-items: center;
 }
 
 .search-form button img.search-icon {
-    width: 30px; /* Ajusta el tamaño de la imagen del botón */
+    width: 30px;
+    /* Ajusta el tamaño de la imagen del botón */
     height: 35px;
-    transition: transform 0.1s ease; /* Añade una transición para hacer la animación suave */
+    transition: transform 0.1s ease;
+    /* Añade una transición para hacer la animación suave */
 }
 
 .search-form button img.search-icon:hover {
-    transform: scale(1.5); /* Efecto de zoom al pasar el ratón por encima */
+    transform: scale(1.5);
+    /* Efecto de zoom al pasar el ratón por encima */
 }
 
 /* Puedes añadir más efectos interesantes, por ejemplo, una sombra suave */
 .search-form {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra alrededor del formulario */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    /* Sombra alrededor del formulario */
     padding: 10px;
-    border-radius: 0px; /* Añade bordes redondeados */
-    background-color: #ffffff; /* Fondo suave para destacar la barra de búsqueda */
+    border-radius: 0px;
+    /* Añade bordes redondeados */
+    background-color: #ffffff;
+    /* Fondo suave para destacar la barra de búsqueda */
 }
 
+/* PARTE 4------: PRIMERA IMAGEN DE PRESENTACION */
+
 .principal-img {
-    width: 100vw; /* Ocupa el 100% del ancho de la ventana */
+    width: 100vw;
+    /* Ocupa el 100% del ancho de la ventana */
     height: auto;
-    object-fit: cove    r; /* Ajusta la imagen para cubrir completamente el contenedor */
+    object-fit: cove r;
+    /* Ajusta la imagen para cubrir completamente el contenedor */
     display: block;
-    margin: 0; /* Elimina los márgenes para que la imagen toque los bordes */
-    padding: 0; /* Elimina cualquier posible relleno */
+    margin: 0;
+    /* Elimina los márgenes para que la imagen toque los bordes */
+    padding: 0;
+    /* Elimina cualquier posible relleno */
     margin-bottom: 20px;
 }
 
@@ -176,25 +218,29 @@ main {
     margin: 0 auto;
 }
 
+/* PARTE 5------: CLASIFICACION SEGUN CATEGORIAS */
+
 /* Categorías */
 .categories {
     margin-bottom: 60px;
     margin-top: 60px;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center;     /* Centrar verticalmente (si es necesario) */
-    flex-direction: row;     /* Mantén los elementos en fila en pantallas grandes */
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente (si es necesario) */
+    flex-direction: row;
+    /* Mantén los elementos en fila en pantallas grandes */
 }
 
 .categories ul {
     list-style: none;
     flex-wrap: wrap;
-    list-style-type: none;  /* Elimina los puntos de la lista */
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 15px;  /* Espacio entre los enlaces */
-
+    gap: 15px;
+    /* Espacio entre los enlaces */
 }
 
 .categories ul li {
@@ -205,14 +251,17 @@ main {
 /* Estilo por defecto para los enlaces de las categorías */
 .categories ul li a {
     text-decoration: none;
-    color: #333333;
-    padding: 8px 32px;
     border: 1px solid #565254;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
-    padding: 10px 20px;  /* Espaciado interno para los botones */
-    background-color: #f5f5f5; /* Fondo del botón */
-    border-radius: 5px;  /* Bordes redondeados */
+    padding: 10px 20px;
+    /* Espaciado interno para los botones */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    font-family: 'Roboto', sans-serif; 
+    /* Cambia 'Roboto' por la fuente que prefieras */
+    font-size: 26px; 
+    /* Ajusta el tamaño de la fuente si es necesario */
 }
 
 /* Hover: al pasar el ratón por encima */
@@ -224,16 +273,28 @@ main {
 /* Categoría seleccionada: estilo activo */
 .categories ul li a.active {
     background-color: #c80067;
-    color: #ffffff !important; /* Forzar color blanco en el texto */
-    border-color: #020202; /* Ajustar el borde al mismo color del fondo */
+    color: #ffffff !important;
+    /* Forzar color blanco en el texto */
+    border-color: #020202;
+    /* Ajustar el borde al mismo color del fondo */
 }
 
+/* Asegurarse de que las reglas de la navegación no afecten a las categorías */
+.header-container .categories,
+.header-container .categories ul,
+.header-container .categories ul li,
+.header-container .categories ul li a {
+    all: unset;
+    display: initial;
+}
+/* fin de la formateo de las  categorias*/
 
+/* PARTE 6.CAUDRICULA DE PRODUCTOS*/
 /* Cuadrícula de productos */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 100px;
+    gap: 50px;
 }
 
 .product-card {
@@ -241,13 +302,18 @@ main {
     /*border: 2px solid #595656; /* Amarillo dorado */
     border-radius: 8px;
     padding: 15px;
+    font-family: 'Roboto', sans-serif; 
+    /* Cambia 'Roboto' por la fuente que prefieras */
+    font-size: 16px; 
+    /* Ajusta el tamaño de la fuente si es necesario */
     text-align: center;
     transition: transform 0.3s, border-color 0.3s;
 }
 
 .product-card:hover {
     transform: scale(1.10);
-    border-color: #000000; /* Rosa fluorescente */
+    border-color: #000000;
+    /* Rosa fluorescente */
 }
 
 .product-card img {
@@ -259,7 +325,8 @@ main {
 }
 
 .product-card h3 {
-    color: #FF007F; /* Rosa fluorescente */
+    color: #FF007F;
+    /* Rosa fluorescente */
     margin-bottom: 10px;
 }
 
@@ -275,7 +342,8 @@ main {
 
 .add-to-cart-button {
     display: inline-block;
-    background-color: #32CD32; /* Verde */
+    background-color: #32CD32;
+    /* Verde */
     color: #ffffff;
     padding: 10px 15px;
     text-decoration: none;
@@ -299,9 +367,9 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form textarea {
-    width: 70%;
-    padding: 18px;
-    margin-bottom: 25px;
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 1px;
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
@@ -311,18 +379,25 @@ form textarea {
 /* aquiiiiiiiiiiiiiiiiiiii*/
 /* Botones del carrito de compras */
 .checkout-button {
-    background-color: #ffffff; /* Rosa fluorescente */
+    background-color: #ffffff;
+    /* Rosa fluorescente */
     color: #000000;
     padding: 10px 15px;
-    border: 2px solid #d3d3d3; /* Gris claro */
+    border: 2px solid #d3d3d3;
+    /* Gris claro */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-    display: block; /* Asegura que el botón ocupe un bloque completo */
-    margin: 0 auto; /* Esto centrará el botón horizontalmente */
-    margin-bottom: 10px; /* Esto añade 20px de margen debajo del botón */
-    margin-top: 10px; /* Esto añade 20px de margen superior */
-    font-size: 24px; /* Tamaño del texto */
+    display: block;
+    /* Asegura que el botón ocupe un bloque completo */
+    margin: 0 auto;
+    /* Esto centrará el botón horizontalmente */
+    margin-bottom: 10px;
+    /* Esto añade 20px de margen debajo del botón */
+    margin-top: 10px;
+    /* Esto añade 20px de margen superior */
+    font-size: 24px;
+    /* Tamaño del texto */
 }
 
 .checkout-button:hover {
@@ -333,40 +408,59 @@ form textarea {
 
 /* Contenedor para los botones, con Flexbox */
 .boton-container {
-    display: flex;          /* Flexbox para alinear en una fila */
-    justify-content: space-between; /* Distribuye los botones equitativamente */
-    gap: 100px;              /* Espacio entre botones */
-    margin-top: 35px;       /* Espaciado superior */
+    display: flex;
+    /* Flexbox para alinear en una fila */
+    justify-content: space-between;
+    /* Distribuye los botones equitativamente */
+    gap: 100px;
+    /* Espacio entre botones */
+    margin-top: 50px;
+    /* Espaciado superior */
+    flex-wrap: wrap;
 }
 
 /* Estilos comunes para los botones */
 .boton-estilo {
-    display: inline-block; /* Permite que el enlace se comporte como un botón */
-    background-color: #ffffff; /* Rosa fluorescente */
+    display: inline-block;
+    /* Permite que el enlace se comporte como un botón */
+    background-color: #ffffff;
+    /* Rosa fluorescente */
     color: #000000;
     padding: 10px 15px;
-    border: 2px solid #d3d3d3; /* Gris claro */
+    border: 2px solid #d3d3d3;
+    /* Gris claro */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 0 auto; /* Esto centrará el botón horizontalmente */
-    margin-bottom: 20px; /* Esto añade 20px de margen debajo del botón */
-    margin-top: 15px; /* Esto añade 20px de margen superior */
-    width: 250px; /* Ancho fijo */
-    text-align: center; /* Centra el texto dentro del botón */
-    font-size: 13px; /* Tamaño del texto */
-    text-decoration: none; /* Remover subrayado en enlaces */
+    margin: 0 auto;
+    /* Esto centrará el botón horizontalmente */
+    margin-bottom: 5px;
+    /* Esto añade 20px de margen debajo del botón */
+    margin-top: 25px;
+    /* Esto añade 20px de margen superior */
+    width: 100px;
+    /* Ancho fijo */
+    text-align: center;
+    /* Centra el texto dentro del botón */
+    font-size: 13px;
+    /* Tamaño del texto */
+    text-decoration: none;
+    /* Remover subrayado en enlaces */
 
 }
+
 a.boton-estilo {
-    display: inline-block; /* Para comportarse como un botón */
-    text-decoration: none; /* Remover subrayado */
+    display: inline-block;
+    /* Para comportarse como un botón */
+    text-decoration: none;
+    /* Remover subrayado */
 }
 
 form button:hover {
     background-color: #a70c6c;
     color: #ffffff;
 }
+
 a.boton-estilo:hover {
     background-color: #a70c6c;
     color: #ffffff;
@@ -396,29 +490,38 @@ a.boton-estilo:hover {
 }
 
 .styled-table {
-    width: 100%; /* Hace que la tabla ocupe todo el ancho disponible */
-    border-collapse: collapse; /* Elimina el espacio entre las celdas */
+    width: 100%;
+    /* Hace que la tabla ocupe todo el ancho disponible */
+    border-collapse: collapse;
+    /* Elimina el espacio entre las celdas */
 }
 
-.styled-table th, .styled-table td {
-    border: 1px solid #d3d3d3; /* Borde gris claro para las celdas */
-    padding: 10px; /* Espaciado interno para las celdas */
-    text-align: center; /* Alineación del texto a la izquierda */
+.styled-table th,
+.styled-table td {
+    border: 1px solid #d3d3d3;
+    /* Borde gris claro para las celdas */
+    padding: 10px;
+    /* Espaciado interno para las celdas */
+    text-align: center;
+    /* Alineación del texto a la izquierda */
 }
 
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Color de fondo alterno para las filas pares */
+    background-color: #f9f9f9;
+    /* Color de fondo alterno para las filas pares */
 }
 
 tr:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar el mouse sobre una fila */
+    background-color: #f1f1f1;
+    /* Color de fondo al pasar el mouse sobre una fila */
 }
 
 
 /* Pie de Página */
 footer {
-    background-color: #ffffff; /* Amarillo dorado */
+    background-color: #ffffff;
+    /* Amarillo dorado */
     text-align: center;
     padding: 15px 0;
     margin-top: auto;
@@ -443,12 +546,14 @@ footer p {
     height: auto;
 }
 
-.footer-links, .social-links {
+.footer-links,
+.social-links {
     text-align: center;
     margin: 2px 0;
 }
 
-.footer-links a, .social-links a {
+.footer-links a,
+.social-links a {
     margin: 0 5px;
     text-decoration: none;
     color: #333;
@@ -467,7 +572,7 @@ footer {
     height: auto;
     bottom: 60px;
     right: 70px;
-    z-index: 800;
+    z-index: 900;
     cursor: pointer;
 }
 
@@ -476,227 +581,270 @@ footer {
     height: auto;
 }
 
-/* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*//* CSS RESPONSIVE*/
 
-/* Reset de márgenes y paddings */
-* {
-    box-sizing: border-box;
-}
 
-body, html {
-    width: 100%;
-    height: 100%;
-}
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffffff;
-    color: #333333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Encabezado */
-header {
-    background-color: #000000; /* NEGRO */
-    padding: 0;
-}
-
-/* Banner y logo */
-.banner {
-    background-color: #0b0b0b;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.logo {
-    text-align: center;
-}
-
-.logo img {
-    width: 50%; /* Hacer el logo responsivo */
-    max-width: 240px; /* Ancho máximo */
-    margin: 20px auto;
-    display: block;
-    
-}
-
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Título del encabezado */
-header h1 a {
-    color: #333333;
-    text-decoration: none;
-    font-size: 2.5em; /* Tamaño grande */
-}
-
-/* Navegación */
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Espaciado entre los elementos del menú */
-nav ul li {
-    margin: 0 20px;
-}
-
-/* Estilos para los enlaces del menú */
-nav ul li a {
-    text-decoration: none;
-    color: #878484;
-    font-size: 1.5em;
-    transition: color 0.3s;
-}
-
-/* Hover */
-nav ul li a:hover {
-    color: #000000;
-}
-
-/* Formulario de búsqueda */
-.search-form {
-    margin-top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Estilos del input de búsqueda */
-.search-form input[type="text"] {
-    padding: 10px 15px;
-    width: 80%; /* Cambiar a 80% para mejor responsividad */
-    max-width: 300px; /* Limitar el ancho máximo */
-    border: 2px solid #ccc;
-    border-radius: 30px;
-    outline: none;
-    background-color: #ffffff;
-}
-
-/* Estilos del botón de búsqueda (ahora una imagen) */
-.search-form button {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-/* Estilo de las imágenes principales */
-.principal-img {
-    width: 100%; /* Cambia a 100% para hacerlo responsivo */
-    height: auto;
-}
-
-/* Contenido principal */
-main {
-    flex: 1;
-    padding: 0px;
-    max-width: 1700px;
-    margin: 0 auto;
-}
-
-/* Cuadrícula de productos */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px; /* Ajustar el espacio entre elementos */
-}
-
-.product-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.product-card:hover {
-    transform: scale(1.10);
-}
-
-.product-card img {
-    max-width: 100%;
-    height: auto; /* Ajustar la altura */
-}
-
-/* Media Queries */
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* PARTE 1 AJUSTE DE INICIO */
 @media (max-width: 768px) {
 
-    nav ul {
-        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    body,
+    html {
+        width: 100%;
+        height: 100%;
     }
-    
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        min-height: 80vh;
+    }
+
+    /* Encabezado */
+    header {
+        background-color: #000000;
+        /* NEGRO */
+        padding: 0;
+    }
+
+    /* Banner y logo */
+    .banner {
+        background-color: #0b0b0b;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    .logo img {
+        width: 40%;
+        /* Hacer el logo responsivo */
+        max-width: 240px;
+        /* Ancho máximo */
+        margin: 20px auto;
+        display: block;
+    }
+
+
+
+    /* Título del encabezado */
+    header h1 a {
+        color: #333333;
+        text-decoration: none;
+        font-size: 2.5em;
+        /* Tamaño grande */
+    }
+
+    /* DESDE AQUI   Navegación */
+    /* Mantiene los elementos en fila pero ajusta el espaciado y el tamaño de fuente */
+    nav ul {
+        gap: 15px; /* Reduce el espacio entre los elementos en móviles */
+    }
+
+    /* Disminuye el tamaño del texto en móviles */
+    nav ul li a {
+        font-size: 1em; /* Tamaño de texto más pequeño en dispositivos móviles */
+        padding: 8px 10px; /* Reduce el padding */
+    }
+
+    /* Ajuste para el ícono del carrito en móviles */
+    .cart-icon {
+        margin-left: 10px;
+        width: 25px;
+        height: 25px; /* Reduce el tamaño del ícono del carrito */
+    }
+
+    /*HASTA AQUI LA BARRA DE NAVEGACION*/
+    /* Formulario de búsqueda */
+    .search-form {
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Estilos del input de búsqueda */
+    .search-form input[type="text"] {
+        padding: 10px 15px;
+        width: 80%;
+        /* Cambiar a 80% para mejor responsividad */
+        max-width: 300px;
+        /* Limitar el ancho máximo */
+        border: 2px solid #ccc;
+        border-radius: 30px;
+        outline: none;
+        background-color: #ffffff;
+    }
+
+    /* Estilos del botón de búsqueda (ahora una imagen) */
+    .search-form button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        margin-top: 0px;
+        /* Ajusta este valor según cuánto quieras moverlo */
+    }
+
+    /* Estilo de las imágenes principales 
+.principal-img {
+    width: 100%; /* Cambia a 100% para hacerlo responsivo
+    height: auto;
+}*/
+
+    /* Contenido principal 
+main {
+    flex: 1;
+    padding: 15px;
+    max-width: 1700px;
+    margin: 0 auto;
+}*/
+
+    /* Cuadrícula de productos */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 5px;
+        /* Ajustar el espacio entre elementos */
+    }
+
+    .product-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: scale(1.10);
+    }
+
+    .product-card img {
+        max-width: 100%;
+        height: auto;
+        /* Ajustar la altura */
+    }
+}
+
+
+/* PARTE 3 AJUSTE DE LA BARRA DE NAVEGACION */
+@media (max-width: 768px) {
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #ffffff;
+        /* Asegurarse de que el fondo del header también sea blanco */
+    }
+
+    nav ul {
+        flex-direction: row;
+        /* Cambiar a columna en pantallas pequeñas */
+    }
+
     nav ul li {
-        margin: 10px 0; /* Ajustar márgenes */
+        margin: 1px 0;
+        /* Ajustar márgenes */
     }
 
     .search-form input[type="text"] {
-        width: 100%; /* Usar el 100% en pantallas pequeñas */
+        width: 80%;
+        /* Usar el 100% en pantallas pequeñas */
     }
 
     header h1 a {
-        font-size: 2em; /* Disminuir el tamaño del texto */
+        font-size: 20em;
+        /* Disminuir el tamaño del texto */
     }
 }
 
-/* Responsive adjustments for smaller screens */
+/* PARTE 1 AJUSTE DE LA TABLA*/
 @media (max-width: 768px) {
-    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
+    th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        font-size: 12px;
+        /* Reduce el tamaño de fuente para móviles */
+        white-space: nowrap;
+        /* Evita que el texto se rompa en varias líneas*/
+    }
+
+    td {
+        font-size: 10px;
+        /* Reduce el tamaño de fuente para móviles */
+        text-align: right;
+    }
+
+    /* Ocultar algunas columnas en móviles si es necesario
+    td:nth-child(5), th:nth-child(5) {
+        display: none; /* Esto ocultaría la columna de "Acciones" en pantallas pequeñas
+    }*/
+
+    /* PARTE 4 AJUSTE DE CATEGORIAS*/
 
     .categories {
-        flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
+        flex-direction: column;
+        /* Las categorías se apilan en columna en pantallas pequeñas */
+        align-items: center;
     }
-    
+
     .categories ul {
-        flex-direction: column; /* Alinea los elementos en una sola columna */
-        gap: 10px;  /* Ajusta el espacio entre enlaces */
+        flex-direction: column;
+        /* Alinea los elementos en una sola columna */
+        align-items: center;
+        gap: 15px;
+        /* Reduce el espacio entre los elementos en móviles */
     }
-}
 
+    .categories ul li {
+        margin-right: 0;
+        /* Elimina el margen entre los elementos */
+    }
 
-/* Contenedor que permite el desplazamiento horizontal */
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    padding-left: 0em;  /* Añade 5em de espacio en el lado izquierdo */
-}
+    .categories ul li a {
+        font-size: 18px;
+        /* Reduce el tamaño de la fuente en móviles */
+        padding: 8px 16px;
+        /* Ajusta el padding para mantener proporción en pantallas pequeñas */
+    }
 
-/* Asegura que la tabla ocupe el 100% del ancho del contenedor */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* Ajusta los anchos de las celdas para que se adapten mejor */
-th, td {
-    padding: 8px 12px;
-    text-align: left;
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
-}
-
-th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-}
-
-/* Estilo general para móviles */
-@media (max-width: 768px) {
-
-    th, td {
-        font-size: 14px; /* Reduce el tamaño de fuente para móviles */
+    .whatsapp-float {
+        right: 20px; /* Mueve el botón más hacia la derecha en móviles */
+        bottom: 20px; /* Ajusta la distancia desde la parte inferior si es necesario */
     }
     
-    /* Ocultar algunas columnas en móviles si es necesario */
-    td:nth-child(5), th:nth-child(5) {
-        display: none; /* Esto ocultaría la columna de "Acciones" en pantallas pequeñas */
+    .boton-container {
+        flex-direction: row; /* Cambia a columna en pantallas pequeñas */
+        align-items: center;
+        gap: 5px; /* Ajusta el espacio entre botones */
+    }
+    
+    .boton-estilo {
+        width: 50%; 
+        /* Los botones ocuparán el 100% del ancho disponible */
+        margin-left: 199;
     }
 }
