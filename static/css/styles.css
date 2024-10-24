@@ -23,207 +23,292 @@ body {
     min-height: 100vh;
 }
 
-/* Encabezado 
-header {
-    background-color: #000000;/* NEGRO
-    padding: 0px;
-}*/
-
 /* banner */
 .banner {
-    background-color: #0b0b0b;
+    background-color: #ffffff;
     color: #fff;
+    font-size: 10px;
     text-align: center;
-    font-family: verdana;
-    padding: 10px 0;
-    font-weight: 200;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px 0;
+    font-weight: 80;
 }
 
 
-
-/* PARTE 2------: CSS PARA EL LOGO */
-.logo {
-    text-align: center;
-}
-
-.logo img {
-    width: 240px;
-    margin: 20px auto;
-    display: block;
-}
-
-/* PARTE 3------: ENCABEZADO DE LA PAGINA WEB */
-
-/* Título del encabezado */
-header h1 a {
-    color: #333333;    /* Letras gris oscuro */
-    text-decoration: none;
-    font-size: 2.5em;    /* Tamaño más grande para el título */
-    font-family: 'Century Gothic', sans-serif;    /* Fuente Century Gothic */
-}
-
-/* PARTE 4. BARRA DE NAVEGACION ---- aqui empieza la barra de navegacion*/
-
-/* Contenedor de la barra de navegación */
-.header-container {
+/* Barra de navegación */
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    padding: 10px;
-    border-bottom: 2px solid #eaeaea;
+    padding: 10px 20px;
 }
 
-/* Estilos para la lista de navegación */
-nav ul {
+/* Logo */
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Iconos de navegación */
+.nav-icons {
     display: flex;
-    justify-content: center;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 10px; /* Espaciado entre los elementos del menú */
+    font-size: 26px; /* Ajusta el tamaño de los iconos */
 }
 
-/* Estilos para los elementos del menú */
-nav ul li {
-    margin: 0;
-}
-
-/* Estilos para los enlaces del menú */
-nav ul li a {
+.nav-icons a {
+    color: #fff;
+    font-size: 15px;
+    margin-left: 20px;
     text-decoration: none;
-    color: #333333;
-    font-size: 1.2em;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    padding: 10px 15px;
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Hover sobre enlaces del menú */
-nav ul li a:hover {
-    color: #ffffff;
-    background-color: #333333;
-    border-radius: 5px;
+.search-icon i, .cart-icon i {
+    color: #ccc;
+    font-size: 26px; /* Ajusta el tamaño de los iconos */
 }
 
-/* Estilo del ícono del carrito */
-.cart-icon {
+/* Menú hamburguesa: tres barras horizontales */
+.menu-toggle .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    cursor: pointer;
+    color: rgb(116, 116, 116); /* Cambia el color de las barras a negro */
+    margin: 6px 0; /* Mantiene la separación entre las barras */
+}
+
+.menu-toggle .hamburger span {
+    display: block;
     width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    margin-left: 15px;
+    height: 8px !important; ;
+    color: #848484;
+    margin: 4px 0;
+    border: 2px solid rgb(117, 117, 117); /* Borde temporal para verificar */
 }
 
+/* Menú de enlaces (ocultos por defecto) */
+.nav-links {
+    display: none;
+    background-color: #000000;
+    padding: 10px;
+}
 
-/* aqui termina la barra de navegacion */
+.nav-links a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid #555;
+}
 
-/* PARTE 5------: LA BARRA BUSCADOR */
+.nav-links a:hover {
+    background-color: #555;
+}
+
+/* INICIO DEL FORMULARIO DE BUSQUEDA*/
 
 /* Formulario de búsqueda */
 .search-form {
-    margin-top: 0px;
     display: flex;
-    justify-content: center;
-    /* Centra el formulario */
-    align-items: center;
-    gap: 15px;
-    /* Añade un pequeño espacio entre los elementos */
+    justify-content: center; /* Centra horizontalmente el formulario */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px; /* Espacio entre el input y el botón */
+    margin: 0 auto; /* Asegura que el formulario esté centrado en el contenedor */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 500px; /* Limita el ancho máximo */
+    padding: 10px;
 }
 
 /* Estilos del input de búsqueda */
 .search-form input[type="text"] {
+    width: 100%; /* Asegura que el input se ajuste al contenedor */
+    max-width: 200px; /* Limita el ancho máximo del input */
     padding: 10px 15px;
-    /* Ajusta el relleno para un aspecto más amplio */
-    width: 300px;
-    /* Aumenta el ancho del campo de búsqueda */
     border: 2px solid #ccc;
-    /* Bordes más visibles */
     border-radius: 30px;
-    /* Bordes redondeados */
     outline: none;
     background-color: #ffffff;
-    /* Fondo blanco */
-    transition: all 0.3s ease;
-    /* Transición suave para los cambios */
+    font-size: 16px;
 }
 
-/* Añade un efecto suave cuando el input esté en focus */
-.search-form input[type="text"]:focus {
-    border-color: #FF007F;
-    /* Cambia el color del borde al enfocarse */
-    box-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
-    /* Sombra rosa cuando se enfoca */
-}
-
-/* Estilos del botón de búsqueda (ahora una imagen) */
+/* Botón con el icono de búsqueda */
 .search-form button {
-    border: none;
     background: none;
-    /* Elimina cualquier fondo */
+    border: none;
     cursor: pointer;
+    outline: none;
     padding: 0;
-    /* Elimina el relleno del botón */
+    display: flex; /* Asegura que el botón y el icono estén alineados */
+    align-items: center; /* Centra verticalmente el icono dentro del botón */
+}
+
+/* Estilos del icono de búsqueda */
+.search-form .search-2icon {
+    width: 30px; /* Tamaño del icono */
+    height: 30px;
+    transition: transform 0.3s ease; /* Efecto de crecimiento al pasar el cursor */
+}
+
+/* Efecto hover en el icono */
+.search-form button:hover .search-2icon {
+    transform: scale(1.2); /* Aumenta el tamaño del icono en un 20% */
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .search-form {
+        padding: 5px;
+    }
+
+    .search-form input[type="text"] {
+        max-width: 200px; /* Ajusta el ancho máximo en pantallas pequeñas */
+    }
+
+    .search-form .search-2icon {
+        width: 25px; /* Reduce el tamaño del icono en pantallas pequeñas */
+        height: 30px; /* Ajusta la altura del icono */
+    }
+}
+
+/* FIN DEL FORMULARIO DE BUSQUEDA*/
+
+/* tucarrito*/
+h2 {
+    text-align: center; /* Centra el texto horizontalmente */
+    color: #242526; /* Cambia el color del texto (puedes modificar el valor del color) */
+    font-size: 24px; /* Cambia el tamaño del texto (ajusta según lo que necesites) */
+    margin-top: 10px; /* Añade espacio superior (opcional) */
+    margin-bottom: 10px; /* Añade espacio inferior (opcional) */
+}
+
+/* PARTE 4------: INICI0 CARRUSEL DE PRESENTACION*/
+.carousel-title {
+    font-size: 35px; /* Tamaño de letra más grande */
+    font-weight: bold; /* Asegura que la letra sea negrita */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: black; /* Color de texto más oscuro */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra gris */
+}
+
+.conteudo__geral {
     display: flex;
+    justify-content: center;
     align-items: center;
-}
-
-.search-form button img.search-icon {
-    width: 30px;
-    /* Ajusta el tamaño de la imagen del botón */
-    height: 35px;
-    transition: transform 0.1s ease;
-    /* Añade una transición para hacer la animación suave */
-}
-
-.search-form button img.search-icon:hover {
-    transform: scale(1.5);
-    /* Efecto de zoom al pasar el ratón por encima */
-}
-
-/* Puedes añadir más efectos interesantes, por ejemplo, una sombra suave */
-.search-form {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    /* Sombra alrededor del formulario */
-    padding: 10px;
-    border-radius: 0px;
-    /* Añade bordes redondeados */
-    background-color: #ffffff;
-    /* Fondo suave para destacar la barra de búsqueda */
-}
-
-/* PARTE 4------: PRIMERA IMAGEN DE PRESENTACION */
-
-.principal-img {
-    width: 100vw;
-    /* Ocupa el 100% del ancho de la ventana */
-    height: auto;
-    object-fit: cove r;
-    /* Ajusta la imagen para cubrir completamente el contenedor */
+    height: 30vh;
+    margin-top: 10px; /* Modify the value to control the spacing */
+    margin-bottom: 100px; /* Modify the value to control the spacing */
+  }
+  
+  .conteudo__geral img {
     display: block;
-    margin: 0;
-    /* Elimina los márgenes para que la imagen toque los bordes */
-    padding: 0;
-    /* Elimina cualquier posible relleno */
-    margin-bottom: 20px;
-}
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .conteudo__geral .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .conteudo__geral .container-carrossel {
+    --widthItem: 140px;
+    --heightItem: 140px;
+    width: var(--widthItem);
+    height: var(--heightItem);
+    perspective: 1000px;
+  }
+  
+  .conteudo__geral .carrossel {
+    --rotatey: 0;
+    font-size: 4rem;
+    position: relative;
+    transform: rotatey(var(--rotatey));
+    transform-style: preserve-3d;
+    user-select: none;
+    cursor: grab;
+  }
+  
+  .conteudo__geral .carrossel-item {
+    opacity: 0.5;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: opacity 0.5s;
+  }
+  
+  .conteudo__geral .carrossel-item:hover {
+    opacity: 1;
+  }
+  
+  .conteudo__geral .carrossel-item:nth-child(1) {
+    --rotatey: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #fbd52d, #ef3a7b);
+  }
+  
+  /* Aplica lo mismo para los otros carrossel-item */
+  .conteudo__geral .carrossel-item:nth-child(2) {
+    --rotatey: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #ff70af, #5fa8f5);
+  }
+  
+  .conteudo__geral .carrossel-item:nth-child(3) {
+    --rotatey: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #0cebeb, #29ffc6);
+  }
+  .conteudo__geral .carrossel-item:nth-child(4) {
+    --rotatey: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #88f7f9, #048fff);
+  }
+  
+  .conteudo__geral .carrossel-item:nth-child(5) {
+    --rotate: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #0093e9, #80d0c7);
+  }
+  
+  .conteudo__geral .carrossel-item:nth-child(6) {
+    --rotatey: 0;
+    transform: rotatey(var(--rotatey)) translatez(var(--tz));
+    background: linear-gradient(-229deg, #cf91ff, #5782f5);
+  }  
 
+  @media screen and (min-width: 576px) {
+    .conteudo__geral .container-carrossel {
+      --widthItem: 250px;
+      --heightItem: 200px;
+    }
+  }
 
+/* PARTE 4------: FIN PRIMERA IMAGEN DE PRESENTACION */
 /* Contenido principal */
 main {
-    flex: 1;
+    flex: 0;
     padding: 0px;
     max-width: 1700px;
-    margin: 0 auto;
+    margin-left: 10;
 }
 
 /* PARTE 5------: CLASIFICACION SEGUN CATEGORIAS */
 
 /* Categorías */
 .categories {
-    margin-bottom: 60px;
-    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     /* Centrar horizontalmente */
@@ -272,7 +357,7 @@ main {
 
 /* Categoría seleccionada: estilo activo */
 .categories ul li a.active {
-    background-color: #c80067;
+    background-color: #000000;
     color: #ffffff !important;
     /* Forzar color blanco en el texto */
     border-color: #020202;
@@ -321,38 +406,40 @@ main {
     height: 200px;
     object-fit: cover;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .product-card h3 {
-    color: #FF007F;
+    color: #3c383a;
     /* Rosa fluorescente */
-    margin-bottom: 10px;
+    margin-bottom: 1px;
+    margin-top: 1px;
 }
 
 .product-card .description {
     font-size: 0.9em;
     color: #666666;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
 }
 
 .product-card p {
-    margin: 5px 0;
+    margin: 1px 0;
 }
 
 .add-to-cart-button {
     display: inline-block;
-    background-color: #32CD32;
+    background-color: #727272;
     /* Verde */
     color: #ffffff;
     padding: 10px 15px;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s;
+    margin-bottom: 20px;
 }
 
 .add-to-cart-button:hover {
-    background-color: #28a745;
+    background-color: #000000;
 }
 
 /* Carrito de Compras */
@@ -376,145 +463,198 @@ form textarea {
 }
 
 
-/* aquiiiiiiiiiiiiiiiiiiii*/
+/* INICIO DE ESTILOS PARA CARRITO CAPTURA DE NOMBRE Y EMAIL DEL CLIENTE*/
+
 /* Botones del carrito de compras */
+/* Estilos generales del formulario */
+#checkout-form {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno del formulario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px; /* Ancho máximo en monitores */
+    margin: 0 auto; /* Centramos el formulario */
+    color: #000000; /* Texto negro */
+}
+
+/* Estilo de los campos de entrada */
+#checkout-form input[type="text"],
+#checkout-form input[type="email"] {
+    width: 90%; /* Que los campos ocupen todo el ancho disponible */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado entre campos */
+    border: 1px solid #333; /* Borde negro */
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: #f9f9f9; /* Fondo suave para los campos */
+    color: #333333; /* Color del texto */
+}
+
+/* Placeholder (texto dentro del input) */
+#checkout-form input::placeholder {
+    color: #393838; /* Color gris claro para el placeholder */
+}
+
+/* Estilo del botón de envío */
 .checkout-button {
-    background-color: #ffffff;
-    /* Rosa fluorescente */
-    color: #000000;
-    padding: 10px 15px;
-    border: 2px solid #d3d3d3;
-    /* Gris claro */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: block;
-    /* Asegura que el botón ocupe un bloque completo */
-    margin: 0 auto;
-    /* Esto centrará el botón horizontalmente */
-    margin-bottom: 10px;
-    /* Esto añade 20px de margen debajo del botón */
-    margin-top: 10px;
-    /* Esto añade 20px de margen superior */
-    font-size: 24px;
-    /* Tamaño del texto */
-}
-
-.checkout-button:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-
-/* Contenedor para los botones, con Flexbox */
-.boton-container {
-    display: flex;
-    /* Flexbox para alinear en una fila */
-    justify-content: space-between;
-    /* Distribuye los botones equitativamente */
-    gap: 100px;
-    /* Espacio entre botones */
-    margin-top: 50px;
-    /* Espaciado superior */
-    flex-wrap: wrap;
-}
-
-/* Estilos comunes para los botones */
-.boton-estilo {
-    display: inline-block;
-    /* Permite que el enlace se comporte como un botón */
-    background-color: #ffffff;
-    /* Rosa fluorescente */
-    color: #000000;
-    padding: 10px 15px;
-    border: 2px solid #d3d3d3;
-    /* Gris claro */
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+/* Efecto hover en el botón */
+.checkout-button:hover {
+    background-color: #333333; /* Un gris más claro al pasar el mouse */
+}
+
+/* Estilo de los títulos */
+#checkout-form h3 {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    #checkout-form {
+        margin: 0 5%; /* Separación del 5% desde los bordes izquierdo y derecho */
+    }
+}
+
+/* FIN DE ESTILOS PARA CARRITO CAPTURA DE NOMBRE Y EMAIL DEL CLIENTE*/
+
+
+
+/* Estilos para formatos del boton de actualizar el carrito */
+
+/* Contenedor para las acciones del carrito */
+.cart-actions-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenedor */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio superior para separar del contenido anterior */
+    flex-wrap: wrap; /* Permite que los botones se ajusten en pantallas pequeñas */
+    align-items: center; /* Alinea verticalmente los botones */
+}
+
+.cart-title {
+    font-size: 30px; /* Tamaño de letra más grande */
+    font-weight: bold; /* Asegura que la letra sea negrita */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: black; /* Color de texto más oscuro */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra gris */
+}
+
+/* Estilo para los botones */
+.boton-2estilo {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Asegura que los enlaces no tengan subrayado */
+    display: inline-block; /* Asegura que los enlaces se comporten como botones */
+    width: 150px; /* Asegura que los botones tengan el mismo tamaño */
+    text-align: center; /* Centra el texto dentro del botón */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del botón */
+}
+
+.boton-2estilo:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .cart-actions-container {
+        flex-direction: column; /* Alinea los botones verticalmente en pantallas pequeñas */
+        align-items: center; /* Centra los botones verticalmente */
+    }
+
+    .boton-2estilo {
+        width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+        max-width: 300px; /* Limita el ancho máximo de los botones */
+        margin-bottom: 10px; /* Espacio inferior entre los botones */
+        font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+        padding: 5px 10px; /* Reduce el padding en pantallas pequeñas */
+    }
+}
+
+/* fin de acciones del carrito*/
+
+/* Para el PDF CODIGO BORRADO*/
+/* La Tabla del carrito*/
+
+/* Centrar la tabla en monitores PRIMERAAAAAAAAAAAAAAAAAAAAAAAA*/
+.table-responsive {
+    display: flex;
+    justify-content: center;
+    /* Asegura que la tabla esté centrada horizontalmente */
     margin: 0 auto;
-    /* Esto centrará el botón horizontalmente */
-    margin-bottom: 5px;
-    /* Esto añade 20px de margen debajo del botón */
-    margin-top: 25px;
-    /* Esto añade 20px de margen superior */
-    width: 100px;
-    /* Ancho fijo */
-    text-align: center;
-    /* Centra el texto dentro del botón */
-    font-size: 13px;
-    /* Tamaño del texto */
-    text-decoration: none;
-    /* Remover subrayado en enlaces */
-
 }
 
-a.boton-estilo {
-    display: inline-block;
-    /* Para comportarse como un botón */
-    text-decoration: none;
-    /* Remover subrayado */
-}
-
-form button:hover {
-    background-color: #a70c6c;
-    color: #ffffff;
-}
-
-a.boton-estilo:hover {
-    background-color: #a70c6c;
-    color: #ffffff;
-}
-
-/* Para el PDF*/
-/* Estilos específicos para el PDF */
-.pdf-container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.total-row td {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    border-top: 2px solid #333;
-}
-
-.total-row td:last-child {
-    font-size: 1.2em;
-    color: #333;
-}
-
+/* Ajustes para la tabla */
 .styled-table {
     width: 100%;
-    /* Hace que la tabla ocupe todo el ancho disponible */
+    max-width: 1200px; /* Limita el ancho máximo en monitores grandes */
     border-collapse: collapse;
-    /* Elimina el espacio entre las celdas */
+    margin-top: 20px; /* Añade un margen superior opcional */
 }
 
+/* Ajustes generales de la tabla */
 .styled-table th,
 .styled-table td {
     border: 1px solid #d3d3d3;
-    /* Borde gris claro para las celdas */
     padding: 10px;
-    /* Espaciado interno para las celdas */
     text-align: center;
-    /* Alineación del texto a la izquierda */
 }
 
-
+/* Fondo alterno para las filas pares */
 tr:nth-child(even) {
-    background-color: #f9f9f9;
-    /* Color de fondo alterno para las filas pares */
+    background-color: #e8e8e8;
 }
 
 tr:hover {
     background-color: #f1f1f1;
-    /* Color de fondo al pasar el mouse sobre una fila */
+}
+
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 768px) {
+    .table-responsive {
+        padding-left: 5%;
+        padding-right: 5%;
+        /* Asegura que haya un margen de 5% en ambos lados */
+    }
+
+    .styled-table {
+        width: 100%; /* Asegura que la tabla ocupe el ancho completo */
+        max-width: none;
+        /* Elimina cualquier límite de ancho en pantallas pequeñas */
+    }
+
+    .styled-table th,
+    .styled-table td {
+        font-size: 1px; /* Tamaño de fuente más pequeño en móviles */
+    }
+    .styled-table td:first-child {
+        font-size: 0.01em; /* Reduce el tamaño de la fuente solo en la primera columna */
+    }
+
+    /* Mantén el tamaño normal en los encabezados */
+    .styled-table th {
+        font-size: inherit;
+    }
 }
 
 
@@ -582,8 +722,362 @@ footer {
 }
 
 
+/* Estilos específicos para la página de contacto */
+.contact-page {
+    padding: 20px;
+}
+
+.contact-title {
+    font-size: 40px; /* Tamaño de letra más grande */
+    font-weight: bold; /* Asegura que la letra sea negrita */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: black; /* Color de texto más oscuro */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra gris */
+}
+
+.contact-description {
+    text-align: center;
+    color: #666;
+}
+
+.contact-form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+.contact-info {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.contact-info li {
+    margin: 10px 0;
+    color: #666;
+}
+
+.contact-info li a {
+    color: #3c444c;
+    text-decoration: none;
+}
+
+.contact-info li a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos responsivos para pantallas de celulares */
+@media (max-width: 600px) {
+    .contact-page {
+        padding: 10px;
+    }
+
+    .contact-form {
+        padding: 15px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 8px;
+    }
+
+    .contact-form button {
+        padding: 8px;
+    }
+}
+
+/* Estilos para los mensajes flash */
+.flash-messages {
+    margin: 20px;
+    padding: 10px;
+}
+
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Estilos responsivos para pantallas de celulares */
+@media (max-width: 600px) {
+
+    .flash-messages {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .flash-message {
+        padding: 8px;
+    }
+}
 
 
+/* Estilos específicos para la página de clientes */
+.clientes-page {
+    padding: 20px;
+}
+
+.clientes-title {
+    font-size: 40px; /* Tamaño de letra más grande */
+    font-weight: bold; /* Asegura que la letra sea negrita */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: black; /* Color de texto más oscuro */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra gris */
+}
+
+.clientes-subtitle {
+    font-size: 18px; /* Tamaño de letra más pequeño */
+    font-weight: normal; /* Letra más fina */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio inferior */
+    color: #666; /* Color de texto más suave */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+}
+
+.clientes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cliente-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cliente-video {
+    width: 90%;
+    border-radius: 5px;
+}
+
+.cliente-info {
+    margin-top: 10px;
+}
+
+.cliente-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.cliente-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.cliente-info a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos responsivos para pantallas de celulares */
+@media (max-width: 600px) {
+    .clientes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cliente-card {
+        width: 100%;
+    }
+}
+
+/* static/css/styles.css */
+
+/* Estilos específicos para la página de blog */
+.blog-page {
+    padding: 20px;
+}
+
+.blog-title {
+    font-size: 40px; /* Tamaño de letra más grande */
+    font-weight: bold; /* Asegura que la letra sea negrita */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: black; /* Color de texto más oscuro */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra gris */
+}
+.blog-subtitle {
+    font-size: 18px; /* Tamaño de letra más pequeño */
+    font-weight: normal; /* Letra más fina */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio inferior */
+    color: #666; /* Color de texto más suave */
+    font-family: "Century Gothic", sans-serif; /* Fuente Century Gothic */
+}
+
+.blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: scale(1.05);
+}
+
+.blog-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.blog-info {
+    margin-top: 10px;
+}
+
+.blog-card-title {
+    margin: 5px 0;
+    color: #333;
+}
+
+.blog-resumen {
+    color: #666;
+}
+
+.articulo-completo {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.articulo-imagen {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.cerrar-articulo {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.cerrar-articulo:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos responsivos para pantallas de celulares */
+@media (max-width: 600px) {
+    .blog-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-card {
+        width: 100%;
+    }
+
+    .articulo-completo {
+        width: 90%;
+        top: 5%;
+    }
+}
+
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
+/* CSS RESPONSIVE*/
 /* CSS RESPONSIVE*/
 /* CSS RESPONSIVE*/
 /* CSS RESPONSIVE*/
@@ -607,111 +1101,41 @@ footer {
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
-        min-height: 80vh;
-    }
-
-    /* Encabezado */
-    header {
-        background-color: #000000;
-        /* NEGRO */
-        padding: 0;
+        min-height: 0vh;
     }
 
     /* Banner y logo */
     .banner {
-        background-color: #0b0b0b;
+        background-color: #ffffff;
         color: #fff;
         text-align: center;
-        padding: 10px 0;
-    }
-
-    .logo {
-        text-align: center;
+        padding: 0px 0;
     }
 
     .logo img {
-        width: 40%;
-        /* Hacer el logo responsivo */
+        width: 60%;
+        /* Hacer el logo responsivo*/
         max-width: 240px;
         /* Ancho máximo */
-        margin: 20px auto;
+        height: auto; /* Mantener las proporciones */
+        margin: 10px auto;
         display: block;
     }
 
-
-
-    /* Título del encabezado */
-    header h1 a {
-        color: #333333;
-        text-decoration: none;
-        font-size: 2.5em;
-        /* Tamaño grande */
+    .nav-icons a {
+        font-size: 20px;
+        margin-left: 15px;
     }
 
-    /* DESDE AQUI   Navegación */
-    /* Mantiene los elementos en fila pero ajusta el espaciado y el tamaño de fuente */
-    nav ul {
-        gap: 15px; /* Reduce el espacio entre los elementos en móviles */
+    .menu-toggle .hamburger span {
+        width: 35px;
+        height: 28px !important; ;
+        display: block;
+        color: rgb(96, 90, 90); /* Cambia el color de las barras a negro */
+        margin: 6px 10; /* Mantiene la separación entre las barras */
+        height: 40px; /* Ajusta la altura del contenedor si es necesario */
     }
-
-    /* Disminuye el tamaño del texto en móviles */
-    nav ul li a {
-        font-size: 1em; /* Tamaño de texto más pequeño en dispositivos móviles */
-        padding: 8px 10px; /* Reduce el padding */
-    }
-
-    /* Ajuste para el ícono del carrito en móviles */
-    .cart-icon {
-        margin-left: 10px;
-        width: 25px;
-        height: 25px; /* Reduce el tamaño del ícono del carrito */
-    }
-
-    /*HASTA AQUI LA BARRA DE NAVEGACION*/
-    /* Formulario de búsqueda */
-    .search-form {
-        margin-top: 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-    }
-
-    /* Estilos del input de búsqueda */
-    .search-form input[type="text"] {
-        padding: 10px 15px;
-        width: 80%;
-        /* Cambiar a 80% para mejor responsividad */
-        max-width: 300px;
-        /* Limitar el ancho máximo */
-        border: 2px solid #ccc;
-        border-radius: 30px;
-        outline: none;
-        background-color: #ffffff;
-    }
-
-    /* Estilos del botón de búsqueda (ahora una imagen) */
-    .search-form button {
-        border: none;
-        background: none;
-        cursor: pointer;
-        margin-top: 0px;
-        /* Ajusta este valor según cuánto quieras moverlo */
-    }
-
-    /* Estilo de las imágenes principales 
-.principal-img {
-    width: 100%; /* Cambia a 100% para hacerlo responsivo
-    height: auto;
-}*/
-
-    /* Contenido principal 
-main {
-    flex: 1;
-    padding: 15px;
-    max-width: 1700px;
-    margin: 0 auto;
-}*/
+    
 
     /* Cuadrícula de productos */
     .product-grid {
@@ -724,7 +1148,7 @@ main {
     .product-card {
         background-color: #ffffff;
         border-radius: 8px;
-        padding: 15px;
+        padding: 0px;
         text-align: center;
         transition: transform 0.3s;
     }
@@ -738,67 +1162,11 @@ main {
         height: auto;
         /* Ajustar la altura */
     }
+
 }
-
-
-/* PARTE 3 AJUSTE DE LA BARRA DE NAVEGACION */
-@media (max-width: 768px) {
-    .header-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        background-color: #ffffff;
-        /* Asegurarse de que el fondo del header también sea blanco */
-    }
-
-    nav ul {
-        flex-direction: row;
-        /* Cambiar a columna en pantallas pequeñas */
-    }
-
-    nav ul li {
-        margin: 1px 0;
-        /* Ajustar márgenes */
-    }
-
-    .search-form input[type="text"] {
-        width: 80%;
-        /* Usar el 100% en pantallas pequeñas */
-    }
-
-    header h1 a {
-        font-size: 20em;
-        /* Disminuir el tamaño del texto */
-    }
-}
-
 /* PARTE 1 AJUSTE DE LA TABLA*/
 @media (max-width: 768px) {
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    th {
-        background-color: #f5f5f5;
-        font-weight: bold;
-    }
-
-    th,
-    td {
-        font-size: 12px;
-        /* Reduce el tamaño de fuente para móviles */
-        white-space: nowrap;
-        /* Evita que el texto se rompa en varias líneas*/
-    }
-
-    td {
-        font-size: 10px;
-        /* Reduce el tamaño de fuente para móviles */
-        text-align: right;
-    }
-
-    /* Ocultar algunas columnas en móviles si es necesario
+       /* Ocultar algunas columnas en móviles si es necesario
     td:nth-child(5), th:nth-child(5) {
         display: none; /* Esto ocultaría la columna de "Acciones" en pantallas pequeñas
     }*/
@@ -836,15 +1204,14 @@ main {
         bottom: 20px; /* Ajusta la distancia desde la parte inferior si es necesario */
     }
     
-    .boton-container {
-        flex-direction: row; /* Cambia a columna en pantallas pequeñas */
-        align-items: center;
-        gap: 5px; /* Ajusta el espacio entre botones */
-    }
-    
-    .boton-estilo {
-        width: 50%; 
-        /* Los botones ocuparán el 100% del ancho disponible */
-        margin-left: 199;
-    }
 }
+
+
+
+
+
+
+
+
+
+

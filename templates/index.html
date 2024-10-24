@@ -4,7 +4,26 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <img src="{{ url_for('static', filename='images/principalIMG.webp') }}" alt="Principal Image" class="principal-img">
+    <!--<img src="{{ url_for('static', filename='images/principalIMG.webp') }}" alt="Principal Image" class="principal-img">-->
+    <div class="carousel-section">
+        <h2 class="carousel-title">My top fitnesswear!</h2>
+    </div>
+    <!-- Codigo para presentacion de carousel o video -->
+    <div class="conteudo__geral">
+        <div class="container">
+            <div class="container-carrossel">
+                <div class="carrossel">
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Sets Shorts/Producto9.webp') }}"></div>
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Sets Leggins y Faldas/Producto3.webp') }}"></div>
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Enterizos/Producto17.webp') }}"></div>
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Sets Shorts/Producto10.webp') }}"></div>
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Leggins y Shorts/Producto22.webp') }}"></div>
+                    <div class="carrossel-item"><img src="{{ url_for('static', filename='images/Enterizos/Producto14.webp') }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de presentacion -->
 
     <!-- Menú de Categorías (solo si no se está buscando) -->
     {% if not search_query %}

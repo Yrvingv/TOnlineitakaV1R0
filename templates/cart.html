@@ -4,9 +4,9 @@
 {% block title %}Carrito de Compras{% endblock %}
 
 {% block content %}
-<h2>Tu Carrito de Compras</h2>
+<h2 class="cart-title">Tu Carrito de Compras</h2>
 {% if cart %}
-<form method="post" action="{{ url_for('update_cart') }}">
+<form method="post" action="{{ url_for('update_cart') }}" class="cart-actions-container">
     <div class="table-responsive">
         <table>
             <thead>
@@ -49,10 +49,8 @@
         </table>
     </div>
     <div class="cart-actions">
-        <button type="submit" class="boton-estilo">Actualizar Carrito</button>
-        <!--<a href="{{ url_for('checkout') }}" class="checkout-button">Finalizar la Compra</a>-->
-        <a href="{{ url_for('index') }}" class="boton-estilo">Continuar Comprando</a>
-        <a href="{{ url_for('download_order') }}" class="boton-estilo">Descargar Orden en PDF</a>
+        <button type="submit" class="boton-2estilo">Actualizar Carrito</button>
+        <a href="{{ url_for('index') }}" class="boton-2estilo">Continuar Comprando</a>
     </div>
 </form>
 

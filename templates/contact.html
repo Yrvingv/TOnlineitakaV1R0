@@ -4,24 +4,26 @@
 {% block title %}Contactos{% endblock %}
 
 {% block content %}
-    <h2>Contacta con Nosotros</h2>
-    <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
-    <ul>
-        <li>Email: soporte@mercadolink.com</li>
-        <li>Teléfono: +1 234 567 890</li>
-        <li>WhatsApp: <a href="https://wa.me/1234567890" target="_blank">Enviar Mensaje</a></li>
-    </ul>
-    <h3>Formulario de Contacto</h3>
-    <form action="#" method="post">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        
-        <button type="submit">Enviar</button>
-    </form>
+    <div class="contact-page">
+        <h2 class="contact-title">Contacta con Nosotros</h2>
+        <p class="contact-description">Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos:</p>
+        <ul class="contact-info">
+            <li>Email: yrving.viera@gmail.com</li>
+            <li>Teléfono: +5411928390182</li>
+            <li>WhatsApp: <a href="https://wa.me/+5491128390182" target="_blank">Enviar Mensaje</a></li>
+        </ul>
+        <h3 class="contact-form-title">Formulario de Contacto</h3>
+        <form class="contact-form" action="#" method="post">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 {% endblock %}

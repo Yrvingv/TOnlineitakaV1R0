@@ -1,13 +1,9 @@
 # app.py
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import sqlite3
-import os
-import pandas as pd
 from urllib.parse import quote
-from flask_mail import Mail, Message  # Import Flask-Mail para enviar correos
-import pdfkit
-from flask import session, make_response
-from datetime import datetime
+from flask_mail import Mail, Message
+import os
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'isabellaV12'  # Cambia esto a una clave secreta segura
@@ -38,8 +34,7 @@ def index(category_name=None):
         products = conn.execute('SELECT * FROM products WHERE category = ?', (category_name,)).fetchall()
     else:
         products = conn.execute('SELECT * FROM products').fetchall()
-    
-    conn.close()
+        conn.close()
     return render_template('index.html', products=products, category_name=category_name)
 
 # Ruta para agregar un producto al carrito
@@ -117,14 +112,10 @@ def remove_from_cart(product_id):
     flash("Producto eliminado del carrito.", 'info')
     return redirect(url_for('cart'))
 
-#al cliente new code
-from flask import render_template, session, request, flash, redirect, url_for
-from urllib.parse import quote
-
-# Ruta para finalizar la compra
+#Ruta para finalizar la compra
 @app.route('/checkout', methods=['POST'])
 def checkout():
-    # Capturar los datos del cliente desde el formulario
+    # 1. Capturar los datos del cliente desde el formulario
     nombre_cliente = request.form['name']
     email_cliente = request.form['email']
     cart = session.get('cart', [])
@@ -133,7 +124,7 @@ def checkout():
         flash("Tu carrito está vacío.", 'warning')
         return redirect(url_for('cart'))
 
-    # Crear el mensaje del correo con los productos y datos del cliente
+    # 2. Crear el mensaje del correo con los productos y datos del cliente
     email_message = f"Pedido de compra:\n\n"
     total = 0
     for item in cart:
@@ -148,7 +139,7 @@ def checkout():
     msg.body = email_message
     mail.send(msg)
 
-    # Redirigir a WhatsApp
+    # 3. Crear el mensaje de WhatsApp con las especificaciones de la compra
     whatsapp_message = "Hola! Quiero comprar los siguientes productos:\n"
     for item in cart:
         subtotal = item['price'] * item['quantity']
@@ -157,59 +148,47 @@ def checkout():
     whatsapp_message += f"\nTotal: ${total}\n\n"
     whatsapp_message += "¿Cuáles son los medios de pago disponibles?"
 
+    # Codificar el mensaje
     encoded_message = quote(whatsapp_message)
-    whatsapp_number = "+5491128390182"  # Número de WhatsApp del vendedor
+
+    # Número de WhatsApp del vendedor
+    whatsapp_number = "+5491128390182"
+
+    # Generar la URL para WhatsApp
     whatsapp_url = f"https://wa.me/{whatsapp_number}?text={encoded_message}"
 
-    # Actualizar el stock en la base de datos
+    # 4. Actualizar el stock en la base de datos
     conn = get_db_connection()
     for item in cart:
         conn.execute('UPDATE products SET stock = stock - ? WHERE id = ?', (item['quantity'], item['id']))
     conn.commit()
     conn.close()
 
-    # Limpiar el carrito después de la compra
+    # 5. Limpiar el carrito después de la compra
     session.pop('cart', None)
 
-    # Redirigir al cliente a WhatsApp en una nueva ventana y mantener la página abierta
-    return f"""
-        <script>
-            window.open('{whatsapp_url}', '_blank');  // Abrir WhatsApp en una nueva pestaña
-            window.location.href = '{url_for('cart')}';  // Mantener la página actual abierta y vaciar el carrito
-        </script>
-    """
+    # Redirigir a WhatsApp
+    return redirect(whatsapp_url)
 
-# Ruta para descargar el pdf del carrito
-@app.route('/download_order', methods=['GET'])
-def download_order():
-    cart = session.get('cart', [])
-    total = sum(item['price'] * item['quantity'] for item in cart)
-    
-    # Obtener la fecha y hora actual
-    current_date_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    
-    # Renderizar la plantilla HTML
-    rendered = render_template('order_pdf.html', cart=cart, total=total, current_date_time=current_date_time)
-    
-    # Convertir el HTML en PDF, permitiendo rutas locales
-    options = {
-        'enable-local-file-access': None  # Esto permite el acceso a archivos locales como imágenes o CSS
-    }
-    
-    # Generar el PDF usando pdfkit y permitir rutas locales
-    pdf = pdfkit.from_string(rendered, False, options=options)
-    
-    # Crear la respuesta con el PDF adjunto
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachment; filename=order.pdf'
-    
-    return response
-
+# Ruta para descargar el pdf del carrito (BORRADO)
 
 # Ruta para la página de contactos
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        # Capturar los datos del formulario
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        
+        # Enviar el correo al vendedor
+        msg = Message("Nuevo Mensaje de Contacto", recipients=['yrving.viera@gmail.com'])
+        msg.body = f"Nombre: {name}\nEmail: {email}\nMensaje: {message}"
+        mail.send(msg)
+        
+        flash('Tu mensaje ha sido enviado. Nos pondremos en contacto contigo pronto.', 'success')
+        return redirect(url_for('contact'))
+    
     return render_template('contact.html')
 
 # Ruta para manejar la búsqueda de productos
@@ -226,12 +205,56 @@ def search():
     return render_template('index.html', products=products, search_query=query)
 
 
-# Ruta para mostrar "Mis Compras" (Funcionalidad futura)
-@app.route('/my-orders')
-def my_orders():
-    # Esta funcionalidad puede ser desarrollada con autenticación de usuarios
-    return "Funcionalidad 'Mis Compras' en desarrollo."
+# Ruta para mostrar "Mis Clientes"
+@app.route('/mis_clientes')
+def mis_clientes():
+    videos = [
+        {"cliente": "Adriana Mendez, Carolina Becerra, Nathaly Rivas", "modelo": "Sets Shorts", "instagram": "@itacasfitnesswear", "video": "V1.mp4"},
+        {"cliente": "Valeria Puccia", "modelo": "Enterizo Morado", "instagram": "@valeriapuccia", "video": "V2.mp4"},
+        {"cliente": "Nathaly Rivas", "modelo": "Enterizo para gym", "instagram": "@nathalyrivas", "video": "V3.mp4"},
+    ]
+    return render_template('mis_clientes.html', videos=videos)
 
+# Ruta para mostrar "Mi Blog"
+@app.route('/mi_blog')
+def mi_blog():
+    articulos = [
+        {
+            "titulo": "La Evolución del Fitnesswear: Moda, Comodidad y Rendimiento",
+            "imagen": "articulo1.webp",
+            "resumen": "El fitnesswear ha evolucionado para combinar estilo y funcionalidad, permitiendo que la ropa deportiva sea ideal tanto para entrenar como para el uso diario. La moda fitness actual se centra en ofrecer conjuntos para gimnasio que se adapten a cualquier actividad, manteniendo comodidad y rendimiento.",
+            "contenido": [
+                "En los últimos años, la ropa deportiva ha experimentado una gran transformación, pasando de ser simple y funcional a convertirse en un elemento clave en la moda. La tendencia hacia un estilo de vida saludable ha impulsado la creación de prendas que no solo ofrecen comodidad y rendimiento, sino que también reflejan las últimas tendencias. Los materiales de alta tecnología, como telas transpirables y elásticas, permiten que los usuarios se sientan cómodos y seguros durante su entrenamiento. Además, las marcas de ropa deportiva han ampliado sus catálogos para ofrecer una gran variedad de opciones que se adaptan a diferentes tipos de ejercicios, desde yoga hasta running, garantizando el máximo rendimiento.",
+                "La moda fitness no solo está pensada para el gimnasio, sino que también ha ganado terreno en el día a día. Muchas personas prefieren usar ropa deportiva fuera de sus entrenamientos por su comodidad y versatilidad. Esta tendencia, conocida como athleisure, combina la estética del fitness con la moda casual, permitiendo que las personas se vean bien mientras se mantienen activas. Las colecciones de moda fitness incluyen colores vibrantes, diseños innovadores y estilos que hacen que las prendas sean apropiadas tanto para entrenar como para salir a la calle, dando lugar a un nuevo enfoque en el vestuario diario.",
+                "Elegir el conjunto para ir al gym adecuado implica más que solo pensar en el estilo. La ropa debe ser funcional y adecuada para el tipo de entrenamiento que se va a realizar. Para ejercicios de alta intensidad, es importante elegir prendas que absorban el sudor y permitan libertad de movimiento, mientras que para actividades más relajadas, como el yoga, es mejor optar por ropa más suave y flexible. Además, un buen conjunto para gimnasio puede motivar a las personas a sentirse más seguras y listas para enfrentar cualquier desafío físico, mejorando su rendimiento y ayudando a alcanzar sus objetivos de fitness."
+            ],
+            "Fecha": "Fecha de publicación: 15 de septiembre de 2024"
+        },
+        {
+            "titulo": "Cómo Elegir la Ropa Deportiva Ideal: Consejos para elegir bien",
+            "imagen": "articulo2.webp",
+            "resumen": "Escoger la ropa deportiva adecuada puede marcar la diferencia en tu rendimiento. Conoce cómo elegir el outfit perfecto para cada tipo de ejercicio y aumenta tu comodidad y estilo en cada entrenamiento.",
+            "contenido": [
+                "Cuando se trata de mejorar el rendimiento físico, seleccionar la ropa deportiva adecuada es crucial. No solo se trata de estilo, sino también de funcionalidad y comodidad. Cada tipo de actividad física tiene sus propias demandas y, por lo tanto, requiere diferentes tipos de prendas. Por ejemplo, si practicas running, necesitarás ropa ligera, que absorba el sudor rápidamente y te permita moverte con libertad. Los pantalones ajustados y camisetas de material técnico son ideales para este tipo de ejercicio, ya que reducen la fricción y ayudan a mantener la frescura.",
+                "Por otro lado, para ejercicios de bajo impacto como el yoga o pilates, la flexibilidad y comodidad son esenciales. En este caso, elegir un conjunto para gimnasio con telas suaves y elásticas, que se adapten a tu cuerpo, es lo más recomendable. Las prendas ajustadas permiten moverse sin restricciones, mientras que los tejidos transpirables aseguran que te mantengas fresco durante toda la práctica. Además, optar por tops o sujetadores deportivos de soporte medio o alto te proporcionará la estabilidad que necesitas en las posturas más exigentes.",
+                "Al final del día, la clave está en conocer las exigencias de tu actividad física y adaptar tu vestimenta en consecuencia. Además, las nuevas tendencias en moda fitness permiten que el fitnesswear no solo sea funcional, sino también elegante. Al elegir prendas de calidad y con características técnicas, te aseguras no solo de obtener el máximo rendimiento, sino también de verte bien mientras entrenas. Ya sea que prefieras un estilo más clásico o sigas las últimas tendencias, invertir en ropa deportiva adecuada elevará tu experiencia de entrenamiento a otro nivel." ,
+            ],
+            "Fecha": "Fecha de publicación: 10 de octubre de 2024"
+        },
+        {
+            "titulo": "Los Beneficios de Invertir en Ropa Deportiva de Alta Calidad",
+            "imagen": "articulo3.webp",
+            "resumen": "La ropa deportiva de alta calidad puede mejorar tu rendimiento, aumentar tu comodidad y hacer que te sientas más motivado para entrenar. Aprende por qué es importante elegir fitnesswear de primera.",
+            "contenido": [
+                "Invertir en fitnesswear de alta calidad no es solo una cuestión de moda, sino una decisión clave que puede afectar directamente tu rendimiento y comodidad durante el entrenamiento. La ropa deportiva premium está diseñada con materiales avanzados que proporcionan una mayor transpirabilidad, mejor ajuste y mayor durabilidad en comparación con las prendas más económicas. Los tejidos de calidad, como el poliéster reciclado o las mezclas de algodón técnico, están pensados para soportar sesiones intensas de ejercicio, absorbiendo el sudor y manteniéndote seco durante más tiempo.",
+                "Otra gran ventaja de optar por moda fitness duradera es la inversión a largo plazo. Aunque inicialmente el precio pueda ser más elevado, estas prendas están diseñadas para durar más tiempo, resistiendo múltiples lavados sin perder su forma, color o propiedades técnicas. Además, la comodidad que ofrecen es incomparable. Las costuras planas, las telas elásticas y los cortes ergonómicos permiten libertad de movimiento y evitan irritaciones en la piel, algo fundamental cuando entrenas con regularidad.",
+                "Finalmente, no se puede subestimar el impacto psicológico de llevar un conjunto para gimnasio de alta calidad. Cuando te sientes bien con lo que llevas puesto, aumenta tu confianza y motivación para alcanzar tus objetivos de fitness. Usar ropa deportiva que se ajuste perfectamente a tu cuerpo, que te haga sentir cómodo y que además esté en línea con las últimas tendencias en moda, puede ser un factor determinante para mantener una rutina constante de ejercicio. En resumen, invertir en fitnesswear de primera calidad no solo optimiza tu rendimiento físico, sino que también mejora tu bienestar general."
+            ],
+            "Fecha": "Fecha de publicación: 21 de enero de 2024"
+            
+        }
+    ]
+    return render_template('mi_blog.html', articulos=articulos)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

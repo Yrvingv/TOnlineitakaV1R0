@@ -1,0 +1,31 @@
+<!-- templates/mi_blog.html -->
+{% extends "base.html" %}
+
+{% block title %}Mi Blog{% endblock %}
+
+{% block content %}
+<div class="blog-page">
+    <h2 class="blog-title">Mi Blog</h2>
+    <p class="blog-subtitle">Actualidad en fitnesswear</p>
+    <div class="blog-grid">
+        {% for articulo in articulos %}
+        <div class="blog-card" onclick="mostrarArticulo({{ loop.index0 }})">
+            <img src="{{ url_for('static', filename='images/mi_blog/' ~ articulo.imagen) }}" alt="{{ articulo.titulo }}" class="blog-image">
+            <div class="blog-info">
+                <h3 class="blog-card-title">{{ articulo.titulo }}</h3>
+                <p class="blog-resumen">{{ articulo.resumen }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="articulo-completo" class="articulo-completo">
+        <button onclick="cerrarArticulo()" class="cerrar-articulo">Cerrar</button>
+        <h3 id="articulo-titulo"></h3>
+        <img id="articulo-imagen" class="articulo-imagen">
+        <div id="articulo-contenido"></div>
+    </div>
+</div>
+<script>
+    const articulos = {{ articulos|tojson }};
+</script>
+{% endblock %}

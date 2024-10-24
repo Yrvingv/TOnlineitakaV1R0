@@ -5,54 +5,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>itaka's fitnesswear - {% block title %}{% endblock %}</title>
+    <title>itaka's fitnesswear</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
 </head>
 
 <body>
     <div class="banner">DELIVERY GRATIS EN BARQUISIMETO | CIERTAS CONDICIONES APLICAN</div>
-    <div class="logo">
-        <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Logo">
-    </div>
     <header>
-        <div class="header-container">
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                    <li><a href="{{ url_for('my_orders') }}">Mis Clientes</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contactos</a></li>
-                    <li>
-                        <a href="{{ url_for('cart') }}">
-                            <img src="{{ url_for('static', filename='images/car.webp') }}" alt="Carrito"
-                                class="cart-icon">
-                            ({{ session.get('cart')|length if session.get('cart') else 0 }})
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="navbar">
+            <!-- Menú hamburguesa -->
+            <a href="#" class="menu-toggle" id="menu-toggle">
+                <div class="hamburger">
+                    <!-- Tres barras para el ícono de menú hamburguesa -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logoH.webp') }}" alt="Logo">
+            </div>
+            <!-- Iconos de búsqueda, carrito y menú hamburguesa -->
+            <div class="nav-icons">
+                <!-- Icono de búsqueda -->
+                <a href="#" id="show-search-form" class="search-icon"><i class="fas fa-search"></i></a>
+                <!-- Icono de cesta de compras -->
+                <a href="{{ url_for('cart') }}" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
+                ({{ session.get('cart')|length if session.get('cart') else 0 }})
+            </div>
+        </nav>
+            <!-- Enlaces de navegación ocultos -->
+            <div class="nav-links" id="nav-links">
+                <a href="{{ url_for('index') }}">Inicio</a>
+                <a href="{{ url_for('cart') }}">Mi carrito</a>
+                <a href="{{ url_for('mis_clientes') }}">Mis Clientes</a>
+                <a href="{{ url_for('contact') }}">Contactos</a>
+                <a href="{{ url_for('mi_blog') }}">Mi Blog</a>
+            </div>
+                 
     </header>
-    <form method="get" action="{{ url_for('search') }}" class="search-form">
-        <input type="text" name="search" placeholder="Buscar productos..."
-            value="{{ search_query if search_query else '' }}">
+    <!-- Formulario de búsqueda, oculto inicialmente -->
+    <form method="get" action="{{ url_for('search') }}" class="search-form" id="search-form">
+        <input type="text" name="search" placeholder="Buscar productos..." value="{{ search_query if search_query else '' }}">
         <button type="submit">
-            <img src="{{ url_for('static', filename='images/busqueda.webp') }}" alt="Buscar" class="search-icon">
+        <img src="{{ url_for('static', filename='images/busqueda.webp') }}" alt="Buscar" class="search-2icon">
         </button>
     </form>
-
+    <!-- ES EL BLOQUE DE PROGRAMACION QUE CAMBIA CON LOS TEMAS https://www.instagram.com/p/C7jrnXdAfPh/  https://github.com/Cassianosch/programador.cs-reels
+Folder 114   AQUI ESTA METIDO: INDEX, CARRITO, CONTACTOS, MI BLOG, OTROS-->
     <main>
         {% block content %}{% endblock %}
+    <!-- Bloque para mostrar mensajes flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
     </main>
 
+    <!-- BANDA FINAL DE LA PAGINA WEB-->
     <footer>
         <footer>
             <div class="footer-links">
                 <a href="{{ url_for('index') }}">Inicio</a>
-                <a href="{{ url_for('my_orders') }}">Mis Clientes</a>
+                <a href="{{ url_for('mis_clientes') }}">Mis Clientes</a>
                 <a href="{{ url_for('contact') }}">Contactos</a>
+                <a href="{{ url_for('mi_blog') }}">Mi Blog</a>
                 <a href="{{ url_for('cart') }}">
-                    <img src="{{ url_for('static', filename='images/car.webp') }}" alt="Carrito" class="cart-icon">
+                    <a href="{{ url_for('cart') }}" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
                     ({{ session.get('cart')|length if session.get('cart') else 0 }})
                 </a>
                 </li>

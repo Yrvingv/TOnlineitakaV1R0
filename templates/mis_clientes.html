@@ -1,0 +1,26 @@
+<!-- templates/mis_clientes.html -->
+{% extends "base.html" %}
+
+{% block title %}Mis Clientes{% endblock %}
+
+{% block content %}
+<div class="clientes-page">
+    <h2 class="clientes-title">Nuestr@s Clientes</h2>
+    <p class="clientes-subtitle">Mira los modelos que lucen nuestras clientes</p>
+    <div class="clientes-container">
+        {% for video in videos %}
+        <div class="cliente-card">
+            <video class="cliente-video" controls>
+                <source src="{{ url_for('static', filename='images/mis_clientes/' ~ video.video) }}" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+            <div class="cliente-info">
+                <p><strong>Cliente:</strong> {{ video.cliente }}</p>
+                <p><strong>Modelo:</strong> {{ video.modelo }}</p>
+                <p><strong>Instagram:</strong> <a href="https://instagram.com/{{ video.instagram }}" target="_blank">{{ video.instagram }}</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
